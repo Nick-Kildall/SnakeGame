@@ -31,10 +31,10 @@ public abstract class GameObject {
 	public int getY() {
 		return y;
 	}
-	public void setID(ID id) {
+	public void setId(ID id) {
 		this.id = id;
 	}
-	public ID getID() {
+	public ID getId() {
 		return id;
 	}
 	public void setVelX(int velX) {

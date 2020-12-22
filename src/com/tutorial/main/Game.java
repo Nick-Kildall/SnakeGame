@@ -15,13 +15,12 @@ public class Game extends Canvas implements Runnable {
 	private Handler handler;
 	
 	public Game() {
+      handler = new Handler();
+      this.addKeyListener(new KeyInput(handler)); // Tells the code to look for key presses
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
-		handler = new Handler();
 		r = new Random();
-		for (int i = 0; i < 50; i ++) {
-			handler.addObject(new Player(r.nextInt(WIDTH),r.nextInt(HEIGHT),ID.Player));
-		}
-		
+		handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
+		handler.addObject(new Player(WIDTH / 2 + 64, HEIGHT / 2 - 32, ID.Player2));
 	}
 	
 	public synchronized void start() {
@@ -60,7 +59,7 @@ public class Game extends Canvas implements Runnable {
 			
 			if(System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				// System.out.println("FPS: " + frames);
 				frames = 0;
 			}
 		}
