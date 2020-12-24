@@ -10,15 +10,19 @@ public class HUD {
    private int greenValue = 255;
    private int redValue = 0;
    
+   private int score = 0;
+   private int level = 1;
    
    public void tick() {
       HEALTH = Game.clamp(HEALTH, 0, 100);
       
-      greenValue = Game.clamp(greenValue, 0, 255);
       greenValue = HEALTH * 2;
+      greenValue = Game.clamp(greenValue, 0, 255);
       
-      redValue = Game.clamp(redValue, 0, 255);
       redValue = 180 - greenValue;
+      redValue = Game.clamp(redValue, 0, 255);
+      
+      score++;
       
    }
    
@@ -27,11 +31,30 @@ public class HUD {
       g.drawString("Health: " + HEALTH + "%", 15, 10);
       g.setColor(Color.gray);
       g.fillRect(15, 15, 200, 32);
-      g.drawString("red " + redValue + "green" + greenValue, 100, 100);
       g.setColor(new Color(redValue, greenValue, 0));
       g.fillRect(15, 15, HEALTH * 2, 32);
       g.setColor(Color.white);
       g.drawRect(15, 15, HEALTH * 2, 32);
+      
+      g.drawString("Score: " + score, 15, 64);
+      g.drawString("Level: " + level, 15, 80);
+
+      
    }
    
+   public void score(int score) {
+      this.score = score;
+   }
+   
+   public int getScore() {
+      return score;
+   } 
+   
+   public int getLevel() {
+      return level;
+   }
+   
+   public void setLevel(int level) {
+      this.level = level;
+   } 
 }

@@ -1,4 +1,3 @@
-// Main Method
 package com.tutorial.main;
 
 import java.awt.Canvas;
@@ -15,21 +14,18 @@ public class Game extends Canvas implements Runnable {
 	private Random r;
 	private Handler handler;
    private HUD hud;
-	 
+	private Spawn spawner;
+   
 	public Game() {
       handler = new Handler();
       this.addKeyListener(new KeyInput(handler)); // Tells the code to look for key presses
       hud = new HUD();
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
+      spawner = new Spawn(handler, hud);
 		r = new Random();
+      
 		handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
-      handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
+
 	}
 	
 	public synchronized void start() {
@@ -79,7 +75,7 @@ public class Game extends Canvas implements Runnable {
 	private void tick() {
 		handler.tick();
       hud.tick();
-      
+      spawner.tick();
 	}
 	
 	private void render() {
