@@ -16,9 +16,9 @@ public class Player extends GameObject {
 	}
 	
    public Rectangle getBounds() {
-      return new Rectangle(x, y, 32, 32);
+      return new Rectangle((int) x, (int) y, 32, 32);
    }
-   
+    
 	public void tick() {
 		x += velX;
 		y += velY;
@@ -32,7 +32,7 @@ public class Player extends GameObject {
 	
    public void collision() {
       for (GameObject temp : handler.object) {
-         if(temp.getId() == ID.BasicEnemy || temp.getId() == ID.FastEnemy){
+         if(temp.getId() == ID.BasicEnemy || temp.getId() == ID.FastEnemy || temp.getId() == ID.SmartEnemy){
             if(getBounds().intersects(temp.getBounds())) {
                HUD.HEALTH -= 2;
             }
@@ -42,7 +42,7 @@ public class Player extends GameObject {
    
 	public void render(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect(x, y, 32, 32);
+		g.fillRect((int) x, (int) y, 32, 32);
 	}
 
 }

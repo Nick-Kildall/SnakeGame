@@ -98,8 +98,8 @@ public class Game extends Canvas implements Runnable {
 	}
 	
    
-   // restricts player movement to window
-   public static int clamp(int var, int min, int max) {
+   // restricts player movement to window and more
+   public static float clamp(float var, float min, float max) {
       if(var >= max) {
          return var = max;
       } else if (var <= min){
