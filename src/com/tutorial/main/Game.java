@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+import java.awt.event.MouseEvent;
 
 public class Game extends Canvas implements Runnable {
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
@@ -19,6 +20,7 @@ public class Game extends Canvas implements Runnable {
    
    public enum STATE {
       Menu,
+      Help,
       Game;
    }
    
@@ -26,11 +28,13 @@ public class Game extends Canvas implements Runnable {
    
 	public Game() {
       handler = new Handler();
+      menu = new Menu(this, handler);
       this.addKeyListener(new KeyInput(handler)); // Tells the code to look for key presses
+      this.addMouseListener(menu);
       hud = new HUD();
 		new Window(WIDTH, HEIGHT, "Let's Build a Game!", this);
       spawner = new Spawn(handler, hud);
-      menu = new Menu();
+      
 		r = new Random();
       
       if (gameState == STATE.Game) {
@@ -110,7 +114,7 @@ public class Game extends Canvas implements Runnable {
       
       if (gameState == STATE.Game) {
          hud.render(g);
-      } else if (gameState == STATE.Menu) {
+      } else if (gameState == STATE.Menu || gameState == STATE.Help) {
          menu.render(g);
       }
 
