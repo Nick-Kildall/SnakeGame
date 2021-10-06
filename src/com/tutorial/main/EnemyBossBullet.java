@@ -31,12 +31,12 @@ public class EnemyBossBullet extends GameObject {
       
       if (y >= Game.HEIGHT) handler.removeObject(this);
       
-      handler.addObject(new Trail(x, y, ID.Trail, Color.red, 16, 16, .1f, handler));
+      handler.addObject(new Trail(x, y, ID.Trail, Color.pink, 16, 16, .1f, handler));
        
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(Color.red);
+		g.setColor(Color.pink);
 		g.fillRect((int) x, (int) y, 16, 16);
    }  
    
