@@ -1,6 +1,10 @@
 # SnakeGame
 
-To run application run the following commands in your terminal:
+<p>
+  To run SnakeGame run the following commands in your terminal:
+</p>
 
-cd src
-java com/tutorial/main/Game
+<blockquote>
+  cd src <br>
+  java com/tutorial/main/Game
+</blockquote>
