@@ -133,7 +133,7 @@ public class Menu extends MouseAdapter {
          g.drawString("Game Over", 180, 70);
          
          g.setFont(fnt2);
-         g.drawString("You lost with a score of " + hud.getScore(), 175, 200);
+         g.drawString("You lost with a score of " + hud.getScore(), 125, 200);
          
          g.drawRect(210, 350, 200, 64);
          g.drawString("Try again", 245, 390);
