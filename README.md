@@ -6,6 +6,7 @@
 
 <blockquote>
   cd src <br>
+  java com/tutorial/main/Game.java <br>
   java com/tutorial/main/Game <br>
 </blockquote>
 
